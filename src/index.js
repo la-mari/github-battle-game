@@ -34,15 +34,33 @@ var ProfileLink = React.createClass({
   }
 });
 
-var ProfileName = React.createClass({
-  render: function (){
-    return <div>{this.props.name}</div>
+ var ProfileName = React.createClass({
+   render: function () {
+     return (
+    	<div>{this.props.name}</div>
+     )
+   }
+ });
+
+// avatar component will take care of encapsulating 
+// profile name component profile link and profile pic
+
+var Avatar = React.createClass({
+  render: function () {
+    return(
+      <div>
+        <ProfilePic imageUrl={this.props.user.image}/>
+        <ProfileName name={this.props.user.name}/>
+        <ProfileLink username={this.props.user.username}/>
+      </div>
+    );
   }
 });
 
-//avatar component will take care of encapsulating 
-//profile name component profile link and profile pic
-
+ReactDOM.render(
+  <Avatar user = {USER_DATA} />,
+  document.getElementById('app')
+);
 
 // var HelloWorld = React.createClass({
 // 	render: function () {
@@ -53,10 +71,10 @@ var ProfileName = React.createClass({
 // 	}
 // });
 
-ReactDOM.render(
-  <HelloWorld name = "Mari"/>,
-  document.getElementById('app')
-);
+// ReactDOM.render(
+//   <HelloWorld name = "Mari"/>,
+//   document.getElementById('app')
+// );
 
 
 
